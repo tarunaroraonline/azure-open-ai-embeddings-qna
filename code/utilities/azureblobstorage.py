@@ -23,6 +23,29 @@ class AzureBlobStorageClient:
         # Generate a SAS URL to the blob and return it
         return blob_client.url + '?' + generate_blob_sas(self.account_name, self.container_name, file_name,account_key=self.account_key,  permission="r", expiry=datetime.utcnow() + timedelta(hours=3))
 
+    def upload_file_with_metadata(self, bytes_data, file_name, content_type='application/pdf', metadata=None):
+        blob_client = self.blob_service_client.get_blob_client(container=self.container_name, blob=file_name)
+
+        # Set content settings and metadata
+        content_settings = ContentSettings(content_type=content_type)
+        if metadata is not None:
+            content_settings.metadata = metadata
+
+        # Upload the created file
+        blob_client.upload_blob(bytes_data, overwrite=True, content_settings=content_settings)
+
+        # Generate a SAS URL to the blob and return it
+        sas_token = generate_blob_sas(
+            self.account_name,
+            self.container_name,
+            file_name,
+            account_key=self.account_key,
+            permission="r",
+            expiry=datetime.utcnow() + timedelta(hours=3)
+        )
+        return blob_client.url + '?' + sas_token
+
+
     def get_all_files(self):
         # Get all files in the container from Azure Blob Storage
         container_client = self.blob_service_client.get_container_client(self.container_name)
