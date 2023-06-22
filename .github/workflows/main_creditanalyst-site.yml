@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: creditanalystacr01.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_db90fa94dc8842638dad36bb0d78b5fc }}/oai-embeddings:${{ github.sha }}
-        file: ./Dockerfile
+        file: WebApp.Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
