@@ -11,7 +11,7 @@ def clear_chat_data():
     st.session_state['chat_history'] = []
     st.session_state['source_documents'] = []
 
-# Initialize chat history
+# Initialize chat history 
 if 'question' not in st.session_state:
     st.session_state['question'] = None
 if 'chat_history' not in st.session_state:
