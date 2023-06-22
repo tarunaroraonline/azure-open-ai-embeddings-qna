@@ -5,10 +5,10 @@ from helper import get_semantic_answer
 hide_menu_style = """<style>#MainMenu {visibility: hidden;}</style>"""
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
-st.image('./microsoft.png', width=200)
-st.title('Azure OpenAI Service Q&A Demo')
-st.caption('Sponsored by Microsoft\'s Global Black Belt team for AI in EMEA')
-st.write('This demo shows how Azure OpenAI Service can be used to answer questions on unstructured data. It was trained on the 10K form dataset. Under the hood, we use OpenAI\'s GPT-3 models and embeddings to generate answers to the users\' questions.')
+st.image('./centrica.png', width=200)
+st.title('Credit Analyst - Copilot')
+st.caption('Generative AI copilot for Credit Analysts')
+st.write('This intelligent application shows how Azure OpenAI Service can be used to answer questions on unstructured data. It was trained on the 10K form dataset. Under the hood, we use OpenAI\'s GPT-3 models and embeddings to generate answers to the users\' questions.')
 
 tab1, tab2, tab3 = st.tabs(["Demo", "Sample questions", "How does this demo work?"])
 
